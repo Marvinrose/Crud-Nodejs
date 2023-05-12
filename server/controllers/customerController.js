@@ -9,12 +9,14 @@ const mongoose = require("mongoose");
 exports.homepage = async (req, res) => {
   // Home
 
+  const messages = await req.consumeFlash("info");
+
   const locals = {
     title: "User Management Sysytem",
     description: "User Management Sysytem Using Nodejs",
   };
 
-  res.render("index", locals);
+  res.render("index", { locals, messages });
 };
 
 // GET
@@ -49,7 +51,7 @@ exports.postCustomer = async (req, res) => {
 
   try {
     await customer.create(newCustomer);
-    // await req.flash("info", "New customer has been added.");
+    await req.flash("info", "New customer has been added.");
 
     res.redirect("/");
   } catch (error) {
