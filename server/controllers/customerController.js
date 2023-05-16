@@ -17,7 +17,7 @@ exports.homepage = async (req, res) => {
   };
 
   try {
-    const customers = await customer.find({}).limit(1222);
+    const customers = await customer.find({}).limit(22);
     res.render("index", { locals, messages, customers });
   } catch (error) {
     console.log(error);
