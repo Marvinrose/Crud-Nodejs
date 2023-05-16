@@ -17,7 +17,7 @@ exports.homepage = async (req, res) => {
   };
 
   try {
-    const customers = await customer.find({}).limit(22);
+    const customers = await customer.find({}).limit(1222);
     res.render("index", { locals, messages, customers });
   } catch (error) {
     console.log(error);
@@ -265,4 +265,22 @@ exports.postCustomer = async (req, res) => {
   // };
 
   // res.render("customer/add", locals);
+};
+
+// GET
+
+//view customer
+
+exports.view = async (req, res) => {
+  try {
+    const Customer = await customer.findOne({ _id: req.params.id });
+    const locals = {
+      title: "View Customer Data",
+      description: "User Management Sysytem",
+    };
+
+    res.render("customer/view", { locals, Customer });
+  } catch (error) {
+    console.log(error);
+  }
 };
