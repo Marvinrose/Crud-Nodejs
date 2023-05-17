@@ -14,7 +14,7 @@ exports.homepage = async (req, res) => {
 
   const locals = {
     title: "User Management Sysytem",
-    description: "User Management Sysytem Using Nodejs",
+    description: " NodeJs User Management System",
   };
 
   try {
@@ -230,7 +230,7 @@ exports.addCustomer = async (req, res) => {
 
   const locals = {
     title: "Add New Customer - CRUD",
-    description: "User Management Sysytem",
+    description: " NodeJs User Management System",
   };
 
   res.render("customer/add", locals);
@@ -270,7 +270,7 @@ exports.view = async (req, res) => {
     const Customer = await customer.findOne({ _id: req.params.id });
     const locals = {
       title: "View Customer Data",
-      description: "User Management Sysytem",
+      description: " NodeJs User Management System",
     };
 
     res.render("customer/view", { locals, Customer });
@@ -288,7 +288,7 @@ exports.edit = async (req, res) => {
     const Customer = await customer.findOne({ _id: req.params.id });
     const locals = {
       title: "Edit Customer Data",
-      description: "User Management Sysytem",
+      description: " NodeJs User Management System",
     };
 
     res.render("customer/edit", { locals, Customer });
@@ -341,7 +341,7 @@ exports.deleteCustomer = async (req, res) => {
 exports.searchCustomer = async (req, res) => {
   const locals = {
     title: "Search Customer Data",
-    description: "Free NodeJs User Management System",
+    description: " NodeJs User Management System",
   };
 
   try {
@@ -359,6 +359,23 @@ exports.searchCustomer = async (req, res) => {
       Customers,
       locals,
     });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// GET
+
+//Search customer
+
+exports.about = async (req, res) => {
+  const locals = {
+    title: "About",
+    description: "NodeJs User Management System",
+  };
+
+  try {
+    res.render("about", locals);
   } catch (error) {
     console.log(error);
   }
