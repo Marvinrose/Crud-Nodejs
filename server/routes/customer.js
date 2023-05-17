@@ -13,5 +13,6 @@ router.get("/view/:id", customerController.view);
 router.get("/edit/:id", customerController.edit);
 router.put("/edit/:id", customerController.editPost);
 router.delete("/edit/:id", customerController.deleteCustomer);
+router.post("/search", customerController.searchCustomer);
 
 module.exports = router;
