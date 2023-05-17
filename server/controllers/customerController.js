@@ -1,3 +1,4 @@
+const expressEjsLayouts = require("express-ejs-layouts");
 const customer = require("../models/customer");
 
 const mongoose = require("mongoose");
@@ -312,6 +313,22 @@ exports.editPost = async (req, res) => {
     });
     await res.redirect(`/edit/${req.params.id}`);
     console.log("redirected");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// DELETE
+
+//Update customer data
+
+exports.deleteCustomer = async (req, res) => {
+  try {
+    await customer.deleteOne({ _id: req.params.id });
+
+    await req.flash("info", "Customer has been deleted!");
+
+    res.redirect("/");
   } catch (error) {
     console.log(error);
   }
