@@ -258,18 +258,11 @@ exports.postCustomer = async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-
-  // const locals = {
-  //   title: "New Customer Added!",
-  //   description: "User Management Sysytem",
-  // };
-
-  // res.render("customer/add", locals);
 };
 
 // GET
 
-//view customer
+//view customer data
 
 exports.view = async (req, res) => {
   try {
@@ -280,6 +273,45 @@ exports.view = async (req, res) => {
     };
 
     res.render("customer/view", { locals, Customer });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// GET
+
+//Edit customer data
+
+exports.edit = async (req, res) => {
+  try {
+    const Customer = await customer.findOne({ _id: req.params.id });
+    const locals = {
+      title: "Edit Customer Data",
+      description: "User Management Sysytem",
+    };
+
+    res.render("customer/edit", { locals, Customer });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// PUT
+
+//Update customer data
+
+exports.editPost = async (req, res) => {
+  try {
+    await customer.findByIdAndUpdate(req.params.id, {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      tel: req.body.tel,
+      email: req.body.email,
+      details: req.body.details,
+      updatedAt: Date.now(),
+    });
+    await res.redirect(`/edit/${req.params.id}`);
+    console.log("redirected");
   } catch (error) {
     console.log(error);
   }

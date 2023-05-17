@@ -4,6 +4,8 @@ const express = require("express");
 
 const expressLayout = require("express-ejs-layouts");
 
+const methodOverride = require("method-override");
+
 const connectDB = require("./server/config/db");
 
 const { flash } = require("express-flash-message");
@@ -18,6 +20,8 @@ const port = 5000 || process.env.PORT;
 connectDB();
 
 app.use(express.urlencoded({ extended: true }));
+
+app.use(methodOverride("_method"));
 
 app.use(express.json());
 
