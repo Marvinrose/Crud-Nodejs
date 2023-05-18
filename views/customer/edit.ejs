@@ -92,18 +92,18 @@
       name="details"
       id="details"
       cols="30"
-      rows="12"
+      rows="10"
       placeholder="Customer Details"
     >
 <%= Customer.details %></textarea
     >
   </div>
 
-  <div class="form-group mb-4">
-    <button type="submit" class="btn btn-primary">Edit Customer</button>
+  <div class="form-group mb-4 text-center mb-3">
+    <button type="submit" class="btn btn-primary btn-lg">Edit Customer</button>
     <button
       type="button"
-      class="btn btn-danger"
+      class="btn btn-danger btn-lg"
       data-bs-toggle="modal"
       id="deleteButton"
       data-bs-target="#deleteModal"
@@ -118,7 +118,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <div class="modal-title">
-          You are about to remove a customer record.
+          <h5>You are about to remove a customer record.</h5>
         </div>
         <button
           type="button"
